@@ -1,9 +1,9 @@
 from array import *
 import random
 import itertools
-array=["a","b","c","d","f"]
+array=[1,2,3,4,5]
 data = itertools.combinations_with_replacement(array, 3)
 for i in data:
-    print(''.join(i))
+    print(i)
     
     
