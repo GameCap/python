@@ -1,7 +1,10 @@
 import pygame
 from random import randint
+pygame.init()
 a = randint(0, 800)
 b = randint(0, 600)
+d = randint(0, 800)
+e = randint(0, 600)
 BLUE = (0, 0, 255)
 WHITE = (255, 255, 255)
 x, y = a, b
@@ -20,7 +23,8 @@ while True:
         if i.type == pygame.QUIT:
             exit()
         if mouse_pos == c:
-            x, y = a, b;
+            x, y = d, e;
     sc.fill(WHITE)
     pygame.draw.rect(sc, BLUE, [x, y, r, r], 3)
     pygame.display.update()
+pygame.quit()
