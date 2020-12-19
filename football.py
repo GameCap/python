@@ -89,9 +89,9 @@ class Ball(pygame.sprite.Sprite):
     def update(self):
         self.rect.x += g * self.dx
         self.rect.y += h * self.dy
-        if self.rect.x > 550 or self.rect.x < 0:
+        if self.rect.x > 540 or self.rect.x < 10:
             self.dx = -self.dx
-        if self.rect.y > 750 or self.rect.y < 0 :
+        if self.rect.y > 740 or self.rect.y < 10 :
              self.dy = -self.dy
         
             
@@ -147,7 +147,7 @@ while True:
             ball.rect.center = (300, 400)
 
     if pygame.sprite.spritecollideany(ball, pl1):
-            ball.dx = -ball.dx
+           ball.dx = -ball.dx
 
     for i in gate1:
             surface.blit(i.image, i.rect)
