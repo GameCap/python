@@ -137,11 +137,17 @@ while True:
         pl1.moveRight()
     elif keys[pygame.K_1]:
         pl1.moveLeft()
+
     
     if pygame.sprite.spritecollideany(ball, gate1):
             score1 += 1
+            ball.rect.center = (300, 400)            
     if pygame.sprite.spritecollideany(ball, gate2):
             score2 += 1
+            ball.rect.center = (300, 400)
+
+    if pygame.sprite.spritecollideany(pl1, ball):
+            ball.dx = -ball.dx
 
     for i in gate1:
             surface.blit(i.image, i.rect)
