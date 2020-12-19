@@ -146,7 +146,7 @@ while True:
             score2 += 1
             ball.rect.center = (300, 400)
 
-    if pygame.sprite.spritecollideany(pl1, ball):
+    if pygame.sprite.spritecollideany(ball, pl1):
             ball.dx = -ball.dx
 
     for i in gate1:
