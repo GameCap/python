@@ -40,7 +40,7 @@ class Gate2(pygame.sprite.Sprite):
         self.image = pygame.image.load(filename)
         self.image.set_colorkey(BLUE)
         self.rect = self.image.get_rect()
-        self.rect.center = (250, 750)
+        self.rect.center = (250, 775)
 
 
 class Player1 (pygame.sprite.Sprite):
@@ -133,17 +133,27 @@ while True:
     
     if pygame.sprite.collide_rect(ball, gate1):
             score1 += 1
-            ball.rect.center = (300, 400)            
+            ball.rect.center = (300, 400)
+            pygame.time.wait(1000)             
     if pygame.sprite.collide_rect(ball, gate2):
             score2 += 1
             ball.rect.center = (300, 400)
+            pygame.time.wait(1000) 
 
-    if pygame.sprite.collide_rect(ball, pl1):
-           ball.dx = -ball.dx 
-           ball.dy = -ball.dy 
+    if pygame.sprite.collide_rect(ball, pl1):   
+        if ball.rect.x - 25 and ball.rect.x + 25 < pl1.rect.x and (pl1.rect.y +50):
+            ball.dx = ball.dx
+            ball.dy = -ball.dy
+        if ball.rect.x - 25 and ball.rect.x + 25> pl1.rect.x and (pl1.rect.y +50):
+            ball.dx = -ball.dx
+            ball.dy = -ball.dy 
     if pygame.sprite.collide_rect(ball, pl2):
-           ball.dx = -ball.dx 
-           ball.dy = -ball.dy 
+        if ball.rect.x - 25 and ball.rect.x + 25 > (pl2.rect.x and pl2.rect.y - 50):
+            ball.dx = ball.dx
+            ball.dy = -ball.dy
+        if ball.rect.x - 25 and ball.rect.x + 25 < (pl2.rect.x and pl2.rect.y - 50):
+            ball.dx = -ball.dx
+            ball.dy = -ball.dy  
      
     surface.fill(BLACK)
     surface.blit(bg.image, bg.rect)
@@ -163,16 +173,17 @@ while True:
     pygame.display.update()
     pygame.time.delay(50) 
 
-    if score1 == 1:
+    if score1 == 2:
         tx = font.render("Player 2 win",True,BLACK)
         surface.blit(tx, [200,400])
         ball.kill()
+        ball.update()
         pl1.kill()
         pl2.kill()
         pygame.display.update()
         pygame.time.delay(50)
         
-    if score2 == 1:
+    if score2 == 2:
         tx = font.render("Player 1 win",True,BLACK)
         surface.blit(tx, [200,400])
         ball.kill()
